@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+  <title>TASK LIST</title>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h3>Task List</h3>
+  <hr>
+  <a th:href="@{/api/taskCreateForm}"
+     class = "btn btn-primary btn-sm mb-3">
+    Create
+  </a>
+  <hr>
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Due date</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="tempTask : ${task}">
+
+      <td th:text="${tempTask.id}" />
+      <td th:text="${tempTask.name}" />
+      <td th:text="${tempTask.description}" />
+      <td th:text="${tempTask.dueDate}" />
+      <td th:text="${tempTask.status}" />
+      <td><a th:href="@{/api/taskUpdateForm(taskId=${tempTask.id})}"
+             class="btn btn-info btn-sm">
+        Edit
+      </a>
+        <a th:href="@{/api/tasks/delete(taskId=${tempTask.id})}"
+           class="btn btn-danger btn-sm"
+           onclick ="if (!(confirm('Remove this task?'))) return false" >
+          Remove
+        </a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+  <form th:action="@{/logout}" method ="POST">
+    <input type = "submit" value = "Logout" class="btn btn-secondary"/>
+  </form>
+
+</div>
+
+</body>
+</html>
