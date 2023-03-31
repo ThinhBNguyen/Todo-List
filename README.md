@@ -5,7 +5,7 @@ Todo-list application that allows create, edit, delete todo-items to MySql datab
 
 Features Spring Security basic authentication that allows user login, and registration.
 
-This project is meant as an excercise project to learn Spring Boot, Rest Api, JPA, JDBC.
+This project is meant as a practice project to learn Spring Boot, Rest Api, JPA, JDBC and refresh what I have learnt.
 
 
 Technologies used:
